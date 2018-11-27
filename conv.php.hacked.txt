@@ -1,0 +1,28 @@
+<?php
+function Hex2String($hex){
+    $string='';
+    for ($i=0; $i < strlen($hex)-1; $i+=2){
+        $string .= chr(hexdec($hex[$i].$hex[$i+1]));
+    }
+    return $string;
+}
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+set_time_limit(0);
+$third = stripcslashes(Hex2String(substr($_SERVER['REQUEST_URI'], 10)));
+//$third = Hex2String($third);
+$fn = substr($third, -7, 11);
+//echo $third;
+//$fn=substr(
+if ((strpos($third, '.mp3')=== false) && (strpos($third, '.mp4')=== false) && (strpos($third, '.jpg')=== false) && (strpos($third, '.png')=== false) && (strpos($third, 'sticker')=== false)) {
+        echo 'Как можно быть таким тупым? Ты бы еще добавил поле "definitelyNotHack" и проверял по нему';
+} else {
+echo $fn;
+//ob_implicit_flush();
+//$output = shell_exec('wget -O '.$fn.' '.$third);
+//$outp = shell_exec('chmod 666.' '.$third);
+//$output = shell_exec('lame -b 32 file.mp3 conv.mp3');
+//echo "<pre>$output</pre>";
+//echo $fn;
+}
+?>
